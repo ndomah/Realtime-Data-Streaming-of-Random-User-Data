@@ -43,7 +43,23 @@ This command sets up:
 - Apache Airflow (Webserver and Scheduler)
 ### 3. Streaming Data with Kafka
 The [kafka_stream.py](https://github.com/ndomah/Realtime-Data-Streaming-of-Random-User-Data/blob/main/dags/kafka-stream.py) fetches random user data from the [Random User API](https://randomuser.me/) and streams it to a Kafka topic.
+
 Key Dag Tasks:
 - `get_data`: Fetch random user data from the API
-- `stream_data`: Publish structured data to the Kafka topic `users_created`.
+- `stream_data`: Publish structured data to the Kafka topic `users_created`
+
 **Execute the DAG**: Access the Airflow web UI at `http://localhost:8080` and trigger the `user_automation` DAG. 
+### 4. Processing Data with Spark
+The [spark_stream.py](https://github.com/ndomah/Realtime-Data-Streaming-of-Random-User-Data/blob/main/spark_stream.py) script processes the Kafka stream and writes the data to Cassandra. 
+
+Key steps include:
+- Connecting to Kafka to read streaming data
+- Defining the schema for structured data processing
+- Writing the processed data to a Cassandra table
+
+**Run the Spark job**:
+```
+spark-submit --master spark://localhost:7077 spark_stream.py
+```
+Monitor the Spark cluster at `http://localhost:9090`.
+### 5. Persisting Data in Cassandra
