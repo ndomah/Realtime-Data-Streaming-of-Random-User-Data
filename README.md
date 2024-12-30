@@ -42,3 +42,8 @@ This command sets up:
 - PostgreSQL
 - Apache Airflow (Webserver and Scheduler)
 ### 3. Streaming Data with Kafka
+The [kafka_stream.py](https://github.com/ndomah/Realtime-Data-Streaming-of-Random-User-Data/blob/main/dags/kafka-stream.py) fetches random user data from the [Random User API](https://randomuser.me/) and streams it to a Kafka topic.
+Key Dag Tasks:
+- `get_data`: Fetch random user data from the API
+- `stream_data`: Publish structured data to the Kafka topic `users_created`.
+**Execute the DAG**: Access the Airflow web UI at `http://localhost:8080` and trigger the `user_automation` DAG. 
