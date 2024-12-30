@@ -63,3 +63,24 @@ spark-submit --master spark://localhost:7077 spark_stream.py
 ```
 Monitor the Spark cluster at `http://localhost:9090`.
 ### 5. Persisting Data in Cassandra
+Cassandra stores the processed data in the `spark_streams.created_users` table.
+
+Query the table using:
+```
+docker exec -it cassandra cqlsh -u cassandra -p cassandra localhost 9042
+```
+Inspect the data:
+```
+SELECT * FROM spark_streams.created_users;
+```
+### Additional Notes
+#### Docker Compose Highlights
+The [docker_compose.yml](https://github.com/ndomah/Realtime-Data-Streaming-of-Random-User-Data/blob/main/docker-compose.yml) file defines all the services and their configurations, including health checks, networking, and volumes.
+#### Entrypoint Script
+The [entrypoint.sh](https://github.com/ndomah/Realtime-Data-Streaming-of-Random-User-Data/blob/main/script/entrypoint.sh) script initializes Airflow's database, installs requirements, and starts the webserver. 
+#### Airflow DAG
+The [Airflow DAG](https://github.com/ndomah/Realtime-Data-Streaming-of-Random-User-Data/blob/main/dags/kafka-stream.py) integrates with Kafka to automate data ingestion and streaming tasks.
+### Visualization
+- **Kafka Control Center**: Access at `http://localhost:9021` to monitor Kafka topics.
+- **Airflow UI**: Access at `http://localhost:8080` to manage workflows.
+- **Spark UI**: Access at `http://localhost:9090` to monitor Spark jobs.
