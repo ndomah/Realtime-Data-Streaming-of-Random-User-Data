@@ -19,4 +19,26 @@ In this project, I built a robust, scalabale, and fault-tolerant pipeline using 
 Have the following installed:
 - Docker and Docker Compose
 - Python
-- Apache Airflow dependencies (`pip install -r [requirements.tx.t](https://github.com/ndomah/Realtime-Data-Streaming-of-Random-User-Data/blob/main/requirements.txt)`)
+- Apache Airflow dependencies (`pip install -r requirements.txt`)
+Write scripts and configure the following folder structure:
+```
+├── dags
+│   └── kafka_stream.py
+├── docker-compose.yml
+├── requirements.txt
+├── script
+│   └── entrypoint.sh
+└── spark_stream.py
+```
+### 2. Spinning Up Docker Containers
+Use `docker-compose.yml` file to orchestrate the environment. Run the following command to spin up all necessary services:
+```
+docker-compose up -d
+```
+This command sets up:
+- Kafka (Zookeeper, Broker, Schema Registry, Control Center)
+- Apache Spark (Master and Worker nodes)
+- Apache Cassandra
+- PostgreSQL
+- Apache Airflow (Webserver and Scheduler)
+### 3. Streaming Data with Kafka
