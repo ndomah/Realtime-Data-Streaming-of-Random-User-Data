@@ -15,3 +15,8 @@ In this project, I built a robust, scalabale, and fault-tolerant pipeline using 
 3. **Data Orchestration**: Airflow handles workflow orchestration, triggering Spark and other tasks.
 4. **Data Storage**: Data is persisted in Cassandra for NoSQL storage and PostgreSQL for relational data.
 ## Workflow
+### 1. Folder Structure and Installation
+Have the following installed:
+- Docker and Docker Compose
+- Python
+- Apache Airflow dependencies (`pip install -r [requirements.tx.t](https://github.com/ndomah/Realtime-Data-Streaming-of-Random-User-Data/blob/main/requirements.txt)`)
